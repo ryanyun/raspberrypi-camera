@@ -15,7 +15,7 @@ start()
     else
         echo "Error: camera not found at /dev/video0" >&2
     fi
-    sudo -u $VLC_USER cvlc --no-audio v4l2:///dev/video0:chroma=MJPG:width=1920:height=1080:fps=30 --sout="#std{access=file,fps=30,mux=ogg,noa$
+    sudo -u $VLC_USER cvlc --no-audio v4l2:///dev/video0:chroma=MJPG:width=1920:height=1080:fps=30 --sout="#std{access=file,fps=30,mux=ogg,noaudio,dst=go.mpg}" -vvv > /dev/null 2>&1  &
 }
 
 stream()
@@ -30,7 +30,7 @@ stream()
     else
         echo "Error: camera not found at /dev/video0" >&2
     fi
-    sudo -u $VLC_USER cvlc --no-audio v4l2:///dev/video0:chroma=MJPG:width=1920:height=1080:fps=30 --sout="#rtp{sdp=rtsp://:8554/}" -vvv > /de$
+    sudo -u $VLC_USER cvlc --no-audio v4l2:///dev/video0:chroma=MJPG:width=1920:height=1080:fps=30 --sout="#rtp{sdp=rtsp://:8554/}" -vvv > /dev/null 2>&1  &
 }
 
 stop()
